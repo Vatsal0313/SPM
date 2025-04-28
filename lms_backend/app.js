@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 4000;
 
 app.use(
   cors({
-    origin: "http://localhost:3000", // Allow frontend origin
+    origin: process.env.FRONTEND_URL, // Allow frontend origin
     credentials: true, // Allow cookies & headers
   })
 );
