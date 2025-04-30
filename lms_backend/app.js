@@ -10,29 +10,29 @@ const db = require('./routes/connection');
 const hostname = `localhost`
 const PORT = process.env.PORT || 4000;
 
-// app.use(
-//   cors({
-//     origin: process.env.FRONTEND_URL, // Allow frontend origin
-//     credentials: true, // Allow cookies & headers
-//   })
-// );
+app.use(
+  cors({
+    origin: [process.env.FRONTEND_URL], // Allow frontend origin
+    credentials: true, // Allow cookies & headers
+  })
+);
 //Changes start
-app.use(cors({
-  origin: (origin, callback) => {
-    const allowedOrigins = [process.env.FRONTEND_URL];
-    if (allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true
-}));
+// app.use(cors({
+//   origin: (origin, callback) => {
+//     const allowedOrigins = [process.env.FRONTEND_URL];
+//     if (allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+//   credentials: true
+// }));
 
-app.options("*", cors({
-  origin: process.env.FRONTEND_URL,
-  credentials: true
-}));
+// app.options("*", cors({
+//   origin: process.env.FRONTEND_URL,
+//   credentials: true
+// }));
 
 //Changes end
 app.use(cookieParser());
