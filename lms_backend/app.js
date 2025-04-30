@@ -33,7 +33,10 @@ app.use(
 //   origin: process.env.FRONTEND_URL,
 //   credentials: true
 // }));
-
+app.options("*", cors({
+  origin: "https://leadmanagementsystem.vercel.app",
+  credentials: true
+}));
 //Changes end
 app.use(cookieParser());
 
