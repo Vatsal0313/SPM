@@ -58,6 +58,15 @@ app.post('/login', async(req, res) => {
       const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '1h' });
       console.log(email,`Login Successfully`);
       res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'strict' });
+        res.setHeader("Access-Control-Allow-Credentials", "true");
+res.setHeader("Access-Control-Allow-Origin", "https://leadmanagementsystem.vercel.app");
+res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS,PATCH,DELETE,POST,PUT");
+res.setHeader("Access-Control-Allow-Headers", "X-CSRF-Token, X-Requested-With, Accept, Content-Type, Authorization");
+
+if (req.method === 'OPTIONS') {
+  res.status(200).end();
+  return;
+}
       res.json({ message: 'Login successful', token });
     } catch (err) {
       res.status(500).json({ error: err.message });
