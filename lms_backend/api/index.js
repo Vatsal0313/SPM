@@ -8,7 +8,7 @@ const app = express();
 
 // ✅ CORS Setup
 const allowedOrigins = [
-  'https://lead-management-system-beryl.vercel.app',
+  'https://leadmanagementsystem-git-main-vatsals-projects-d11e392c.vercel.app/',
   'http://localhost:3000'
 ];
 
