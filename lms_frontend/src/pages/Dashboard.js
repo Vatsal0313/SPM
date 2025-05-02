@@ -100,7 +100,7 @@ const Dashboard = () => {
               </p>
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { label: "Today Followup", value: employee.today_follow_up },
+                  // { label: "Today Followup", value: employee.today_follow_up },
                   { label: "Open Lead", value: employee.open_lead },
                   { label: "Close Lead", value: employee.close_lead },
                   { label: "Cancel Lead", value: employee.cancel_lead },

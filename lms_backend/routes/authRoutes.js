@@ -57,7 +57,11 @@ app.post('/login', async(req, res) => {
       if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
       const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '1h' });
       console.log(email,`Login Successfully`);
-      res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'strict' });
+      res.cookie("token", token, {
+          httpOnly: true,
+          secure: true,        // Required on HTTPS (Vercel uses HTTPS)
+          sameSite: "None",    // Allows sending cookie across domains
+        });
       res.json({ message: 'Login successful', token });
     } catch (err) {
       res.status(500).json({ error: err.message });
